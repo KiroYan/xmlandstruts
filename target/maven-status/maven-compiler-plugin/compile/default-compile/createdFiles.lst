@@ -1,0 +1,10 @@
+com\epam\xmlstruts\model\Product.class
+com\epam\xmlstruts\util\TransformerCreator.class
+com\epam\xmlstruts\util\ProductValidator.class
+com\epam\xmlstruts\util\ReentrantReadWriteLockHolder.class
+com\epam\xmlstruts\util\ValidationDetailsHolder.class
+com\epam\xmlstruts\util\ProductBuilder.class
+com\epam\xmlstruts\actions\ShopActions.class
+com\epam\xmlstruts\forms\DocumentForm.class
+com\epam\xmlstruts\util\XmlToJdomConvertor.class
+com\epam\xmlstruts\constants\Constants.class

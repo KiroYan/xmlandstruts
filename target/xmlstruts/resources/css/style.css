@@ -1,0 +1,53 @@
+body{
+	font: 76% arial,sans-serif;
+	text-align:left;
+	text-color:red;
+	display: table;
+	width: 99%; 
+}
+
+
+label {
+	display: inline-block;
+	width: 60px;
+}
+
+.error{color: red}
+
+div#header{
+	 background-color:#FFFFFF;
+	 border: 1px solid black;
+	 padding-left:10px; 
+	 text-align:left;
+}
+
+div#container{
+	text-align:left;
+	display:table;
+	border-collapse:collapse;
+	width:99%; 
+	margin:0 auto;
+	border: 2px solid black;
+	height: 100% }
+div#content{
+	margin: 5px;
+    border:2px; 
+    border-color:#E8E8E8;
+    border-style: solid;
+    margin-left:10%; 
+    margin-right:10%;
+    height:90%;
+    min-height:770px;
+    padding:20px;
+    overflow: hidden; text-align:justify;
+}
+
+input[type="text"] {
+    width: 250px;
+    margin: 5px;
+    border-color: #E8E8E8; 
+    border-style:  solid;
+}
+
+
+

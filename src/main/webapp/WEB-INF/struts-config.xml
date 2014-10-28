@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	
+	<form-beans>
+		<form-bean name="documentForm" type="com.epam.xmlstruts.forms.DocumentForm" />
+	</form-beans>
+	
+	<global-forwards>
+ 		<forward name="categories" path="shop.do?action=viewCategories"/>
+ 		<forward name="init" path="shop.do?action=init"/>
+ 		<forward name="productsAction" path="shop.do?action=viewProducts" redirect="true"/>
+	</global-forwards>
+
+	<action-mappings>
+
+		<action path="/shop" type="com.epam.xmlstruts.actions.ShopActions"
+			parameter="action"
+			name="documentForm">
+			
+			<forward name="catAction" path="/shop.do?action=viewCategories" />
+			<forward name="categories" path="/WEB-INF/pages/categories.jsp" />
+			<forward name="subcategories" path="/WEB-INF/pages/subcategories.jsp" />
+			<forward name="products" path="/WEB-INF/pages/products.jsp" />
+			<forward name="addproduct" path="/WEB-INF/pages/addproduct.jsp" />
+			<forward name="editproduct" path="/WEB-INF/pages/editproduct.jsp" />
+			<forward name="savetofile" path="shop.do?action=saveToFile" />
+			
+
+		</action>
+
+
+	</action-mappings>
+
+</struts-config>

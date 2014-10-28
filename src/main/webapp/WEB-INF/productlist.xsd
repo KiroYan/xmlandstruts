@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<!-- definition of simple elements -->
+<!-- <xs:element name="categoryName" type="xs:string"/>
+<xs:element name="subcategoryName" type="xs:string"/> -->
+<xs:element name="name" type="xs:string"/>
+<xs:element name="producer" type="xs:string"/>
+
+
+<xs:element name="color" type="xs:string"/>
+<xs:element name="notInStock"/>
+<xs:element name="price" type="xs:decimal"/>
+
+<xs:element name="model">
+  <xs:simpleType>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z]{2}[0-9]{3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:element>
+
+<xs:element name="dateOfIssue">
+  <xs:simpleType>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="((0[1-9]|[1-2]\d|3[01])-(0[13578]|1[02])|([0-2]\d|30)-(0[469]|11)|(0[1-9]|1\d|2[0-8])-02)-\d{4}|(0[1-9]|[12]\d)-02-(([02468][048]|[13579][26])00|(\d{2}([02468][48]|[2468][048]|[13579][26])))"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:element>
+
+<!-- definition of complex elements -->
+<xs:element name="shop">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="categories"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="categories">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="category" maxOccurs="unbounded"/>
+	</xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="category" >
+ <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="name"/>
+      <xs:element ref="subcategories"/>
+	</xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="subcategories">
+  <xs:complexType>
+    <xs:sequence> 
+      <xs:element ref="subcategory" maxOccurs="unbounded"/>
+	</xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+
+<xs:element name="subcategory" >
+ <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="name"/>
+      <xs:element ref="product" maxOccurs="unbounded"/>
+	</xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+
+
+<xs:element name="product" >
+<xs:complexType>
+    <xs:sequence>
+      <xs:element ref="name"/>
+      <xs:element ref="producer"/>
+      <xs:element ref="model"/>
+      <xs:element ref="dateOfIssue"/>
+      <xs:element ref="color"/>
+      <xs:choice>
+      	<xs:element ref="notInStock"/>
+      	<xs:element ref="price"/>
+      </xs:choice>
+      
+	</xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+</xs:schema>
