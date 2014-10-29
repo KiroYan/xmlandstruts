@@ -1,0 +1,39 @@
+class ShopDocumentService {
+  private Document shop;
+  
+  
+  public List<Integer> getNumberOfProductsPerCategoty() {
+Element root = shop.getRootElement();
+List<Element> categories = root.getChildren().get(0).getChildren();
+List<Integer> numberOfProductsInCategories = new ArrayList<Integer>();
+XPathFactory xpfac = XPathFactory.instance();
+for (int i = 1; i <= categories.size(); i++) {
+XPathExpression<Element> xp = xpfac.compile("/shop/categories/category[" + i
++ "]/subcategories/subcategory/product", Filters.element());
+numberOfProductsInCategories.add(xp.evaluate(shop).size());
+}
+return numberOfProductsInCategories;
+}
+
+
+private Transformer getTransformerWithSetParameters(HttpServletRequest request) {
+Transformer transformer = TransformerCreator.newTransformer(xslDoc);
+String categoryPosition = String.valueOf(Integer.parseInt(request.getParameter(Constants.CATEGORY)) + 1);
+String subcategoryPosition = String.valueOf(Integer.parseInt(request.getParameter(Constants.SUBCATEGORY)) + 1);
+transformer.setParameter(Constants.CATEGORY, categoryPosition);
+transformer.setParameter(Constants.SUBCATEGORY, subcategoryPosition);
+transformer.setParameter(Constants.NAME, request.getParameter(Constants.NAME));
+transformer.setParameter(Constants.PRODUCER,request.getParameter(Constants.PRODUCER));
+transformer.setParameter(Constants.MODEL, request.getParameter(Constants.MODEL));
+transformer.setParameter(Constants.DATE_OF_ISSUE,request.getParameter(Constants.DATE_OF_ISSUE));
+transformer.setParameter(Constants.COLOR, request.getParameter(Constants.COLOR));
+if (request.getParameter("inStock").equals("true")) {
+transformer.setParameter(Constants.PRICE, request.getParameter(Constants.PRICE));
+}
+return transformer;
+}
+
+
+
+
+}
